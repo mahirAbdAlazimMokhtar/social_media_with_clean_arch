@@ -2,8 +2,11 @@
 
 
 import 'package:flutter/material.dart';
+
+import 'package:insta/src/config/app_router.dart';
 import 'package:insta/src/config/app_theme.dart';
-import 'package:insta/src/shared/presentation/widgets/widgets.dart';
+
+
 
 
 void main(){
@@ -16,24 +19,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: CustomTheme().themeData(),
-      home: const HomeScreen(),
+      routerConfig: AppRouter().router,
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar:AppBar(
-        title: const Text('Flutter app with clean arch'),
-      ) ,
-      bottomNavigationBar: const CustomNavBar(),
-    );
-  }
-}
+
+
+
+
+
+
+
+
+
+

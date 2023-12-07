@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomNavBar extends StatelessWidget {
   const CustomNavBar({super.key});
@@ -14,12 +15,16 @@ class CustomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.goNamed('feed');
+                },
                 iconSize: 30,
                 icon: const Icon(Icons.home),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.goNamed('discover');
+                },
                 iconSize: 30,
                 icon: const Icon(Icons.search),
               ),

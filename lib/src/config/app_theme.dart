@@ -7,6 +7,11 @@ class CustomTheme {
       scaffoldBackgroundColor: Colors.black87,
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
+        titleTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.white),
       ),
