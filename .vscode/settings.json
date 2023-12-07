@@ -1,5 +1,36 @@
 {
+<<<<<<< HEAD
     "cSpell.words": [
         "signup"
     ]
 }
+=======
+<<<<<<< Updated upstream
+    "cmake.sourceDirectory": "/Users/dilmi/vsCode_projects/insta/windows/flutter"
+}
+=======
+    "cSpell.words": [
+        "signup"
+    ],
+    "editor.suggest.showStatusBar": false,
+    
+        "workbench.colorCustomizations": {
+            "statusBar.background" : "#7160e8",
+            "statusBar.noFolderBackground" : "#212121",
+            "statusBar.debuggingBackground": "#263238"
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
+>>>>>>> app_theme

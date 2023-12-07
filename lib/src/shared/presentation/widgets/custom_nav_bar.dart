@@ -9,7 +9,7 @@ class CustomNavBar extends StatelessWidget {
       notchMargin: 10,
       color: Colors.black,
       child: SizedBox(
-          height: 74,
+          height: 75,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
