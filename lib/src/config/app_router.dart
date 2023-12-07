@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:insta/main.dart';
 
 class AppRouter {
-  //TODO: add the auth bloc as an input
+  //TODO: add the auth bloc as an input 
   AppRouter();
 
   late final GoRouter router = GoRouter(routes: <GoRoute>[
