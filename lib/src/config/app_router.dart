@@ -20,7 +20,7 @@ class AppRouter {
     routes: [
       GoRoute(
         name: 'feed',
-        path: '/',
+        path: '/feed',
         builder: (context, state) => const FeedScreen(),
       ),
       GoRoute(
@@ -36,7 +36,7 @@ class AppRouter {
           ]),
       GoRoute(
         name: 'login',
-        path: '/login',
+        path: '/',
         builder: (context, state) => const LoginScreen(),
         routes: [
           GoRoute(
