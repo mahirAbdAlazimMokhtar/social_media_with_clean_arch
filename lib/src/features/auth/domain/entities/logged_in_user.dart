@@ -1,7 +1,9 @@
+import 'package:formz/formz.dart';
+
 import '../../../../shared/domain/entities/user.dart';
 
 class LoggedInUser extends User {
-  final String? email;
+  final Email? email;
   const LoggedInUser({
     required super.id,
     required super.username,
@@ -11,7 +13,7 @@ class LoggedInUser extends User {
     this.email,
   });
 
-  static const empty = LoggedInUser(id: '_', username: '-', email: '-');
+  static const empty = LoggedInUser(id: '_', username: Username.pure(), email: Email.pure());
   @override
   List<Object?> get props => [
         id,
@@ -24,11 +26,11 @@ class LoggedInUser extends User {
 
   LoggedInUser copyWith({
     String? id,
-    String? username,
+    Username? username,
     int? followers,
     int? followings,
     String? imagePath,
-    String? email,
+    Email? email,
   }) {
     return LoggedInUser(
       id: id ?? this.id,
@@ -39,4 +41,62 @@ class LoggedInUser extends User {
       email: email ?? this.email,
     );
   }
+  
 }
+//formz class
+//enum  UsernameValidationError
+enum EmailValidationError {
+  invalid,
+}
+
+class Email extends FormzInput<String, EmailValidationError> {
+  const Email.pure() : super.pure('');
+  const Email.dirty([String value = '']) : super.dirty(value);
+  static final RegExp _emailRegExp = RegExp(
+    r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
+  );
+  @override
+  EmailValidationError? validator(String value) {
+    return _emailRegExp.hasMatch(value )
+        ? null
+        : EmailValidationError.invalid;
+  }
+}
+enum PasswordValidationError {
+  invalid,
+}
+
+class Password extends FormzInput<String, PasswordValidationError> {
+  const Password.pure() : super.pure('');
+  const Password.dirty([String value = '']) : super.dirty(value);
+  static final RegExp _passwordRegExp = RegExp(
+        r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
+  );
+  @override
+  PasswordValidationError? validator(String value) {
+    return _passwordRegExp.hasMatch(value)
+        ? null
+        : PasswordValidationError.invalid;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
