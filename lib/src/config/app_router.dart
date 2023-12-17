@@ -3,7 +3,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
 import 'package:go_router/go_router.dart';
 import 'package:insta/src/features/auth/presentation/views/login_screen.dart';
 import 'package:insta/src/features/feed/presentation/view/discover_screen.dart';

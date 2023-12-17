@@ -1,4 +1,4 @@
-import 'package:insta/src/shared/domain/entities/user.dart';
+import '../../domain/entities/user.dart';
 
 class UserModel {
   final String id;

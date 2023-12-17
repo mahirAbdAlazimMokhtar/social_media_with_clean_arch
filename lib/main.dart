@@ -3,8 +3,8 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:insta/src/config/app_router.dart';
-import 'package:insta/src/config/app_theme.dart';
+import 'src/config/app_router.dart';
+import 'src/config/app_theme.dart';
 
 
 

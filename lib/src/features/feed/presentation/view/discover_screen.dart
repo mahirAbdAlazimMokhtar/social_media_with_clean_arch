@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:insta/src/shared/presentation/widgets/widgets.dart';
+import '../../../../shared/presentation/widgets/widgets.dart';
 
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({super.key});
