@@ -27,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         _getLoggedInUserUseCase = getLoggedInUserUseCase,
         super(const AuthState.unknown()) {
     on<AuthGetStatus>((_onAuthGetStatus));
-    on<AuthGetStatus>((_onAuthLogoutUser));
+    on<AuthLogoutUser>((_onAuthLogoutUser));
     _authStreamSubscription =
         _getAuthStatusUseCase(NoParams()).listen((status) {
       add(AuthGetStatus(status: status));
@@ -56,7 +56,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  void _onAuthLogoutUser(AuthGetStatus event, Emitter<AuthState> emit) async {
+  void _onAuthLogoutUser(AuthLogoutUser event, Emitter<AuthState> emit) async {
     debugPrint('Start user Logout With _onAuthLogoutUser');
     await _logoutUserUseCase(NoParams());
     emit(const AuthState.unauthenticated());

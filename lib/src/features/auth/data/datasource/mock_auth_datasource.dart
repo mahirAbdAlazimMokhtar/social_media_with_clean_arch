@@ -81,11 +81,12 @@ class MockAuthDatasourceImpl extends MockAuthDatasource {
     return Future.delayed(const Duration(milliseconds: 300), () {
       for (final user in _allUser) {
         if (user.username.value == username.value) {
-          _updateLoggedInUser(username: user.username,id: user.id);
+          _updateLoggedInUser(username: user.username, id: user.id);
           _controller.add(AuthStatus.authenticated);
           return;
         }
       }
+      throw LoginWithUsernameAndPasswordFailure.fromCode('User Not Found');
     });
   }
 
@@ -103,6 +104,25 @@ class MockAuthDatasourceImpl extends MockAuthDatasource {
     _cache.write(
         key: userCacheKey,
         value: loggedInUser.copyWith(id: id, username: username, email: email));
+  }
+}
+
+class LoginWithUsernameAndPasswordFailure implements Exception {
+  final String message;
+
+  LoginWithUsernameAndPasswordFailure({required this.message});
+  factory LoginWithUsernameAndPasswordFailure.fromCode(String code) {
+    switch (code) {
+      case 'invalid-username':
+        return LoginWithUsernameAndPasswordFailure(
+            message: 'Username is not valid');
+      case 'user-not-found':
+        return LoginWithUsernameAndPasswordFailure(
+            message: 'Username is not found, please create an account');
+      default:
+        return LoginWithUsernameAndPasswordFailure(
+            message: 'An unknown exception occurred.');
+    }
   }
 }
 
