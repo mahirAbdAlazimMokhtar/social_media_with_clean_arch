@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:insta/src/features/auth/domain/usecases/singup_user_usecase.dart';
+import 'package:insta/src/features/auth/presentation/controller/cubits/singup/singup_cubit.dart';
 
 import 'src/config/app_router.dart';
 import 'src/config/app_theme.dart';
@@ -43,19 +45,27 @@ class MyApp extends StatelessWidget {
             ),
           ),
           BlocProvider(
-              create: (context) => LoginCubit(
-                  loginUserUseCase: LoginUserUseCase(
-                      authRepository: context.read<AuthRepositoryImpl>())))
+            create: (context) => LoginCubit(
+              loginUserUseCase: LoginUserUseCase(
+                authRepository: context.read<AuthRepositoryImpl>(),
+              ),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => SingupCubit(
+              singUpUserUseCase: SingUpUserUseCase(
+                authRepository: context.read<AuthRepositoryImpl>(),
+              ),
+            ),
+          ),
         ],
-        child: Builder(
-          builder: (context) {
-            return MaterialApp.router(
-              title: 'Flutter Demo',
-              theme: CustomTheme().themeData(),
-              routerConfig: AppRouter(context.read<AuthBloc>()).router,
-            );
-          }
-        ),
+        child: Builder(builder: (context) {
+          return MaterialApp.router(
+            title: 'Flutter Demo',
+            theme: CustomTheme().themeData(),
+            routerConfig: AppRouter(context.read<AuthBloc>()).router,
+          );
+        }),
       ),
     );
   }
