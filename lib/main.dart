@@ -47,10 +47,14 @@ class MyApp extends StatelessWidget {
                   loginUserUseCase: LoginUserUseCase(
                       authRepository: context.read<AuthRepositoryImpl>())))
         ],
-        child: MaterialApp.router(
-          title: 'Flutter Demo',
-          theme: CustomTheme().themeData(),
-          routerConfig: AppRouter().router,
+        child: Builder(
+          builder: (context) {
+            return MaterialApp.router(
+              title: 'Flutter Demo',
+              theme: CustomTheme().themeData(),
+              routerConfig: AppRouter(context.read<AuthBloc>()).router,
+            );
+          }
         ),
       ),
     );
