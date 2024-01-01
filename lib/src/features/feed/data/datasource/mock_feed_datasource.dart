@@ -9,7 +9,7 @@ abstract class MockFeedDatasource {
   Future<List<Post>> getPostsByUser(String userId);
 }
 
-class MocFeedDatasourceImpl implements MockFeedDatasource {
+class MocKFeedDatasourceImpl implements MockFeedDatasource {
   @override
   Future<List<Post>> getPosts() async {
     await Future.delayed(const Duration(milliseconds: 200), () {});
