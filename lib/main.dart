@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta/src/features/auth/domain/usecases/singup_user_usecase.dart';
 import 'package:insta/src/features/auth/presentation/controller/cubits/singup/singup_cubit.dart';
+import 'package:insta/src/features/feed/data/datasource/mock_feed_datasource.dart';
+import 'package:insta/src/features/feed/data/repository/post_repository_impl.dart';
+import 'package:insta/src/features/feed/domain/usecase/get_posts_usecase.dart';
+import 'package:insta/src/features/feed/presentation/controller/feed_bloc/feed_bloc.dart';
 
 import 'src/config/app_router.dart';
 import 'src/config/app_theme.dart';
@@ -29,7 +33,12 @@ class MyApp extends StatelessWidget {
           create: (context) => AuthRepositoryImpl(
             authDatasource: MockAuthDatasourceImpl(),
           ),
-        )
+        ),
+        RepositoryProvider(
+          create: (context) => PostRepositoryImpl(
+            mockFeedDatasource: MocKFeedDatasourceImpl(),
+          ),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -51,6 +60,13 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
+          // BlocProvider(
+            // create: (context) => FeedBloc(
+              // getPostsUsecase: GetPostsUsecase(
+                // postRepository: context.read<PostRepositoryImpl>(),
+              // ),
+            // ),
+          // ),
           BlocProvider(
             create: (context) => SingupCubit(
               singUpUserUseCase: SingUpUserUseCase(
