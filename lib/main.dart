@@ -4,8 +4,8 @@ import 'package:insta/src/features/auth/domain/usecases/singup_user_usecase.dart
 import 'package:insta/src/features/auth/presentation/controller/cubits/singup/singup_cubit.dart';
 import 'package:insta/src/features/feed/data/datasource/mock_feed_datasource.dart';
 import 'package:insta/src/features/feed/data/repository/post_repository_impl.dart';
-import 'package:insta/src/features/feed/domain/usecase/get_posts_usecase.dart';
-import 'package:insta/src/features/feed/presentation/controller/feed_bloc/feed_bloc.dart';
+
+
 
 import 'src/config/app_router.dart';
 import 'src/config/app_theme.dart';
