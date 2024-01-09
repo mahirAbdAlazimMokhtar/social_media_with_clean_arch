@@ -1,6 +1,6 @@
-import 'package:insta/src/features/feed/domain/repository/post_repository.dart';
-import 'package:insta/src/shared/domain/entities/post.dart';
-import 'package:insta/src/shared/domain/usecase/usecases.dart';
+import '../repository/post_repository.dart';
+import '../../../../shared/domain/entities/post.dart';
+import '../../../../shared/domain/usecase/usecases.dart';
 
 class GetPostsByUserId implements UseCase <List<Post> ,GetPostsByUserParams> {
   final PostRepository postRepository ;

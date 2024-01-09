@@ -2,8 +2,8 @@ import 'package:video_player/video_player.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:insta/src/features/feed/presentation/controller/feed_bloc/feed_bloc.dart';
-import 'package:insta/src/shared/domain/entities/post.dart';
+import '../controller/feed_bloc/feed_bloc.dart';
+import '../../../../shared/domain/entities/post.dart';
 
 import '../../../../shared/presentation/widgets/custom_video_player.dart';
 import '../../../../shared/presentation/widgets/widgets.dart';

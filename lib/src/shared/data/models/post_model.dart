@@ -1,5 +1,5 @@
-import 'user_model.dart';
 import '../../domain/entities/post.dart';
+import 'user_model.dart';
 
 class PostModel {
   final String id;

@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:insta/src/features/auth/domain/entities/logged_in_user.dart';
-import 'package:insta/src/features/auth/domain/usecases/singup_user_usecase.dart';
-import 'package:insta/src/shared/domain/entities/user.dart';
+import '../../../../domain/entities/logged_in_user.dart';
+import '../../../../domain/usecases/singup_user_usecase.dart';
+import '../../../../../../shared/domain/entities/user.dart';
 
 part 'singup_state.dart';
 

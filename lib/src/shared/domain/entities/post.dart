@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:insta/src/shared/domain/entities/user.dart';
+import 'user.dart';
 
 class Post extends Equatable {
   final String id;

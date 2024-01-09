@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:insta/src/features/auth/data/datasource/mock_auth_datasource.dart';
+import '../../../../data/datasource/mock_auth_datasource.dart';
 
 sealed class AuthEvent extends Equatable {
   const AuthEvent();

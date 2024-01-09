@@ -1,4 +1,4 @@
-import 'package:insta/src/shared/domain/usecase/usecases.dart';
+import '../../../../shared/domain/usecase/usecases.dart';
 
 import '../repositories/auth_repository.dart';
 

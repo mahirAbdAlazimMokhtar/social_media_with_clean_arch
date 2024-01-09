@@ -1,6 +1,6 @@
-import 'package:insta/src/features/feed/domain/repository/user_repository.dart';
-import 'package:insta/src/shared/domain/entities/user.dart';
-import 'package:insta/src/shared/domain/usecase/usecases.dart';
+import '../repository/user_repository.dart';
+import '../../../../shared/domain/entities/user.dart';
+import '../../../../shared/domain/usecase/usecases.dart';
 
 class GetUserUsecase implements UseCase<User, GetUserParams> {
   final UserRepository userRepository;

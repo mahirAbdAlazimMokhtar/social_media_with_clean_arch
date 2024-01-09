@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:insta/src/features/feed/domain/usecase/get_posts_usecase.dart';
-import 'package:insta/src/shared/domain/entities/post.dart';
-import 'package:insta/src/shared/domain/usecase/usecases.dart';
+import '../../../domain/usecase/get_posts_usecase.dart';
+import '../../../../../shared/domain/entities/post.dart';
+import '../../../../../shared/domain/usecase/usecases.dart';
 
 part 'feed_event.dart';
 part 'feed_state.dart';

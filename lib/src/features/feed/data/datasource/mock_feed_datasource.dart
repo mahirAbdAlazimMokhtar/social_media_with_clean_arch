@@ -1,8 +1,8 @@
-import 'package:insta/src/shared/data/datasource/post_data.dart';
-import 'package:insta/src/shared/data/datasource/user_data.dart';
-import 'package:insta/src/shared/data/models/post_model.dart';
-import 'package:insta/src/shared/data/models/user_model.dart';
-import 'package:insta/src/shared/domain/entities/user.dart';
+import '../../../../shared/data/datasource/post_data.dart';
+import '../../../../shared/data/datasource/user_data.dart';
+import '../../../../shared/data/models/post_model.dart';
+import '../../../../shared/data/models/user_model.dart';
+import '../../../../shared/domain/entities/user.dart';
 
 import '../../../../shared/domain/entities/post.dart';
 

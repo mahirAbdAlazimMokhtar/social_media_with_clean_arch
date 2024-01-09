@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:insta/src/features/auth/data/datasource/mock_auth_datasource.dart';
+import '../../../../data/datasource/mock_auth_datasource.dart';
 import '../../../../domain/entities/logged_in_user.dart';
 import '../../../../domain/usecases/login_user_usecase.dart';
 

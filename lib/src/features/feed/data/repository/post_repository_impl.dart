@@ -1,6 +1,6 @@
-import 'package:insta/src/features/feed/data/datasource/mock_feed_datasource.dart';
-import 'package:insta/src/features/feed/domain/repository/post_repository.dart';
-import 'package:insta/src/shared/domain/entities/post.dart';
+import '../datasource/mock_feed_datasource.dart';
+import '../../domain/repository/post_repository.dart';
+import '../../../../shared/domain/entities/post.dart';
 
 class PostRepositoryImpl implements PostRepository {
   final MockFeedDatasource mockFeedDatasource;

@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:insta/src/features/auth/domain/usecases/singup_user_usecase.dart';
-import 'package:insta/src/features/auth/presentation/controller/cubits/singup/singup_cubit.dart';
-import 'package:insta/src/features/feed/data/datasource/mock_feed_datasource.dart';
-import 'package:insta/src/features/feed/data/repository/post_repository_impl.dart';
-
-
 
 import 'src/config/app_router.dart';
 import 'src/config/app_theme.dart';
@@ -15,8 +9,13 @@ import 'src/features/auth/domain/usecases/get_auth_status_user_usecase.dart';
 import 'src/features/auth/domain/usecases/get_logged_in_user_usecase.dart';
 import 'src/features/auth/domain/usecases/login_user_usecase.dart';
 import 'src/features/auth/domain/usecases/logout_user_usecase.dart';
+import 'src/features/auth/domain/usecases/singup_user_usecase.dart';
 import 'src/features/auth/presentation/controller/blocs/auth/auth_bloc.dart';
 import 'src/features/auth/presentation/controller/cubits/login/login_cubit.dart';
+import 'src/features/auth/presentation/controller/cubits/singup/singup_cubit.dart';
+import 'src/features/feed/data/datasource/mock_feed_datasource.dart';
+import 'src/features/feed/data/repository/post_repository_impl.dart';
+import 'src/features/feed/data/repository/user_repository_impl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,6 +38,10 @@ class MyApp extends StatelessWidget {
             mockFeedDatasource: MocKFeedDatasourceImpl(),
           ),
         ),
+        RepositoryProvider(
+            create: (context) => UserRepositoryImpl(
+                  mocKFeedDatasource: MocKFeedDatasourceImpl(),
+                ))
       ],
       child: MultiBlocProvider(
         providers: [
@@ -61,11 +64,11 @@ class MyApp extends StatelessWidget {
             ),
           ),
           // BlocProvider(
-            // create: (context) => FeedBloc(
-              // getPostsUsecase: GetPostsUsecase(
-                // postRepository: context.read<PostRepositoryImpl>(),
-              // ),
-            // ),
+          // create: (context) => FeedBloc(
+          // getPostsUsecase: GetPostsUsecase(
+          // postRepository: context.read<PostRepositoryImpl>(),
+          // ),
+          // ),
           // ),
           BlocProvider(
             create: (context) => SingupCubit(

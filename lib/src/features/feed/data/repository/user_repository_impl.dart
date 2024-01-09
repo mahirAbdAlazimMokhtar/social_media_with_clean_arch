@@ -1,6 +1,6 @@
-import 'package:insta/src/features/feed/data/datasource/mock_feed_datasource.dart';
-import 'package:insta/src/features/feed/domain/repository/user_repository.dart';
-import 'package:insta/src/shared/domain/entities/user.dart';
+import '../datasource/mock_feed_datasource.dart';
+import '../../domain/repository/user_repository.dart';
+import '../../../../shared/domain/entities/user.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final MockFeedDatasource mocKFeedDatasource;
