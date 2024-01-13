@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:insta/src/features/feed/data/datasource/local_feed_datasource.dart';
+import 'package:insta/src/shared/data/models/post_model.dart';
+import 'package:insta/src/shared/data/models/user_model.dart';
 
 import 'src/config/app_router.dart';
 import 'src/config/app_theme.dart';
@@ -17,7 +21,11 @@ import 'src/features/feed/data/datasource/mock_feed_datasource.dart';
 import 'src/features/feed/data/repository/post_repository_impl.dart';
 import 'src/features/feed/data/repository/user_repository_impl.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(UserModelAdapter());
+  Hive.registerAdapter(PostModelAdapter());
   runApp(const MyApp());
 }
 
@@ -35,6 +43,7 @@ class MyApp extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => PostRepositoryImpl(
+            localFeedDatasource: LocalFeedDataSourceImpl(),
             mockFeedDatasource: MocKFeedDatasourceImpl(),
           ),
         ),
