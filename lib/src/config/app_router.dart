@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:insta/src/features/content/presentation/add_content_screen.dart';
 import 'package:insta/src/features/feed/data/repository/user_repository_impl.dart';
 import 'package:insta/src/features/feed/domain/usecase/get_users_usecase.dart';
 import 'package:insta/src/features/feed/presentation/controller/bloc/discover_bloc.dart';
@@ -63,7 +64,12 @@ class AppRouter {
           builder: (context, state) => const SingupScreen(),
         ),
       ],
-    )
+    ),
+    GoRoute(
+      name: 'add_content',
+      path: '/add-content',
+      builder: (context, state) => const AddContentScreen(),
+    ),
   ]);
   // redirect: (BuildContext context, GoRouterState state) {
   // final loginLocation = state.namedLocation('login');

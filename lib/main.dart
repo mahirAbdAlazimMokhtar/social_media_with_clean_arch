@@ -27,6 +27,7 @@ void main() async {
   Hive.registerAdapter(UserModelAdapter());
   Hive.registerAdapter(PostModelAdapter());
   runApp(const MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {

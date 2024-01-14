@@ -41,6 +41,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Upload images for screen background</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a photo to upload it as the background of your profile</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Post videos to profile</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
