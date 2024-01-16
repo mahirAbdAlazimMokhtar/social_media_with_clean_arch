@@ -33,4 +33,9 @@ class PostRepositoryImpl implements PostRepository {
       return localFeedDatasource.getPosts();
     }
   }
+
+  @override
+  Future<void> createPost(Post post) async {
+    return await localFeedDatasource.addPost(post);
+  }
 }

@@ -3,11 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:insta/src/features/content/domain/usecase/create_post_usecase.dart';
 import 'package:insta/src/features/content/presentation/add_content_screen.dart';
+import 'package:insta/src/features/content/presentation/blocs/add_content_cubit/add_content_cubit.dart';
 import 'package:insta/src/features/feed/data/repository/user_repository_impl.dart';
 import 'package:insta/src/features/feed/domain/usecase/get_users_usecase.dart';
 import 'package:insta/src/features/feed/presentation/controller/bloc/discover_bloc.dart';
 
+import '../features/auth/data/datasource/mock_auth_datasource.dart';
 import '../features/auth/presentation/controller/blocs/auth/auth_bloc.dart';
 
 import '../features/auth/presentation/views/login_screen.dart';
@@ -68,30 +71,33 @@ class AppRouter {
     GoRoute(
       name: 'add_content',
       path: '/add-content',
-      builder: (context, state) => const AddContentScreen(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => AddContentCubit(createPostUsecase: CreatePostUsecase(postRepository:context.read<PostRepositoryImpl>() )),
+        child: const AddContentScreen(),
+      ),
     ),
-  ]);
-  // redirect: (BuildContext context, GoRouterState state) {
-  // final loginLocation = state.namedLocation('login');
-  // final singupLocation = state.namedLocation('singup');
-  // final bool isLoggedIn =
-  // authBloc.state.status == AuthStatus.authenticated;
-  // final isLoggingIn = state.matchedLocation == loginLocation;
-  // final isSigningUp = state.matchedLocation == singupLocation;
+  ],
+  redirect: (BuildContext context, GoRouterState state) {
+  final loginLocation = state.namedLocation('login');
+  final singupLocation = state.namedLocation('singup');
+  final bool isLoggedIn =
+  authBloc.state.status == AuthStatus.authenticated;
+  final isLoggingIn = state.matchedLocation == loginLocation;
+  final isSigningUp = state.matchedLocation == singupLocation;
 
-  // If user is logged in and trying to access login or sign up page -> navigate to feed
-  // if (!isLoggedIn && !isLoggingIn && !isSigningUp) {
-  // return '/login';
-  // }
-  // if (isLoggingIn && isLoggedIn) {
-  // return '/';
-  // }
-  // if (isSigningUp && isLoggedIn) {
-  // return '/';
-  // }
-  // return null;
-  // },
-  // refreshListenable: GoRouterRefreshStream(authBloc.stream));
+  //If user is logged in and trying to access login or sign up page -> navigate to feed
+  if (!isLoggedIn && !isLoggingIn && !isSigningUp) {
+  return '/login';
+  }
+  if (isLoggingIn && isLoggedIn) {
+  return '/';
+  }
+  if (isSigningUp && isLoggedIn) {
+  return '/';
+  }
+  return null;
+  },
+  refreshListenable: GoRouterRefreshStream(authBloc.stream));
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {

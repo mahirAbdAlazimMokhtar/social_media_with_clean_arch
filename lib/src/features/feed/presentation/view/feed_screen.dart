@@ -1,11 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../controller/feed_bloc/feed_bloc.dart';
-
 
 import '../../../../shared/presentation/widgets/widgets.dart';
+import '../controller/feed_bloc/feed_bloc.dart';
 
 class FeedScreen extends StatelessWidget {
   const FeedScreen({super.key});
@@ -13,8 +10,9 @@ class FeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: const CustomNavBar(),
-        body: BlocBuilder<FeedBloc, FeedState>(builder: (context, state) {
+      bottomNavigationBar: const CustomNavBar(),
+      body: BlocBuilder<FeedBloc, FeedState>(
+        builder: (context, state) {
           if (state is FeedLoading) {
             return const Center(
               child: CircularProgressIndicator(color: Colors.white),
@@ -30,8 +28,8 @@ class FeedScreen extends StatelessWidget {
                     .map(
                       (post) => CustomVideoPlayer(
                         assetPath: post.assetPath,
-                        caption: post.caption,
                         username: post.user.username.value,
+                        caption: post.caption,
                       ),
                     )
                     .toList(),
@@ -40,6 +38,8 @@ class FeedScreen extends StatelessWidget {
           } else {
             return const Text('Something went wrong!');
           }
-        }));
+        },
+      ),
+    );
   }
 }

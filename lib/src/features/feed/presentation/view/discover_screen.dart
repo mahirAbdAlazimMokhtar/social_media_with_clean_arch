@@ -67,7 +67,7 @@ class _DiscoverUserCard extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: (user.imagePath == null)
-                  ? const AssetImage('assets/images_images_1.jpg')
+                  ? const AssetImage('assets/images/images_1.jpg')
                   : AssetImage(user.imagePath!),
             ),
           ),

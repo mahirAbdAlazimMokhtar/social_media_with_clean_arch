@@ -21,7 +21,7 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
 
   void _onFeedGetPosts(FeedGetPosts event, Emitter<FeedState> emit)async {
     debugPrint('Start getting posts with : _onFeedGetPosts');
-    final posts = await _getPostsUsecase(NoParams());
+    List<Post> posts = await _getPostsUsecase(NoParams());
     debugPrint('End getting posts with : _onFeedGetPosts');
     emit(FeedLoaded(posts: posts));
   }
