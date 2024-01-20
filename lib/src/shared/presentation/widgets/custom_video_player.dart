@@ -23,48 +23,55 @@ class CustomVideoPlayer extends StatefulWidget {
 }
 
 class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
-  late VideoPlayerController controller;
-
+  late VideoPlayerController _controller;
   @override
-  void initState() {
-    if (widget.assetPath.startsWith('assets')) {
-      controller = VideoPlayerController.asset(widget.assetPath);
-    } else {
-      controller = VideoPlayerController.file(File(widget.assetPath));
-    }
-
-    controller.initialize().then((_) => setState(() {}));
-    controller.setLooping(true);
-    controller.play();
-
-    super.initState();
+void initState() {
+  if (widget.assetPath.startsWith('assets')) {
+     print('Initializing VideoPlayerController from asset: ${widget.assetPath}');
+    _controller = VideoPlayerController.asset(widget.assetPath);
+  } else {
+    _controller = VideoPlayerController.file(File(widget.assetPath));
   }
+
+  _controller.initialize().then((_) {
+     print('VideoController initialized successfully.');
+    setState(() {});
+  }).catchError((error) {
+    print("Error initializing video controller: $error");
+  });
+
+  _controller.setLooping(true);
+  _controller.play();
+
+  super.initState();
+}
+
 
   @override
   void dispose() {
-    controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.value.isInitialized) {
+    if (!_controller.value.isInitialized) {
       return const SizedBox();
     } else {
       return GestureDetector(
         onTap: () {
           setState(() {
-            if (controller.value.isPlaying) {
-              controller.pause();
+            if (_controller.value.isPlaying) {
+              _controller.pause();
             } else {
-              controller.play();
+              _controller.play();
             }
           });
         },
         child: AspectRatio(
-          aspectRatio: controller.value.aspectRatio,
+          aspectRatio: _controller.value.aspectRatio,
           child: Stack(children: [
-            VideoPlayer(controller),
+            VideoPlayer(_controller),
             const CustomGradientOverlay(),
             (widget.caption == null || widget.username == null)
                 ? const SizedBox()
